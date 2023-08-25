@@ -1,0 +1,16 @@
+{
+  "name": "my-dnd-assistant",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "start": "nodemon app.js",
+    "convert": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "3.1.9",
+    "express": "4.18.2",
+    "nodemon": "3.0.1"
+  }
+}

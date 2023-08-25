@@ -1,0 +1,21 @@
+{
+  "rules": [
+    ["Zykis", "Zykiss"],
+    ["Zykiss", "[color:#ff851b]Zykiss[/color]"],
+    ["[color:#ff851b][color:#ff851b]", "[color:#ff851b]"],
+
+    ["Ceiryn", "[color:#ff56ff]Ceiryn[/color]"],
+    ["[color:#ff56ff]Ceiryn[/color]", "[color:#ff56ff]Ceiryn[/color]"],
+    ["[color:#ff56ff][color:#ff56ff]", "[color:#ff56ff]"],
+
+    ["Oumu", "[color:#ff56ff]Oumu[/color]"],
+    ["Oumuamua", "[color:#ff56ff]Oumuamua[/color]"],
+    ["Oumuamuá", "[color:#ff56ff]Oumuamuá[/color]"],
+    ["[color:#ff56ff][color:#ff56ff]", "[color:#ff56ff]"],
+
+    ["Wynne", "[color:#2ecc40]Wynne[/color]"],
+    ["[color:#2ecc40][color:#2ecc40]", "[color:#2ecc40]"],
+
+    ["[/color][/color]", "[/color]"]
+  ]
+}

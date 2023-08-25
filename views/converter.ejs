@@ -1,0 +1,38 @@
+<%- include('./includes/header.ejs') %>
+<link rel="stylesheet" href="/css/modal.css">
+<script src="/js/main.js"></script>
+</head>
+
+<body>
+  <main>
+
+    <div class="form-control">
+      <label for="originalText">Original:</label>
+      <textarea id="originalText" name="originalText" rows="20" cols="100"></textarea>
+    </div>
+
+    <div class="form-control">
+      <button id="convertButton" type="button" class="btn">
+        Convert!
+      </button>
+    </div>
+
+    <button class="btn" id="openModalBtn">Edit rules</button>
+
+    <div class="form-control">
+      <label for="parsedText">Parsed:</label>
+      <textarea id="parsedText" name="parsedText" rows="20" cols="100"></textarea>
+    </div>
+
+    <div id="editRulesModal" class="modal">
+
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <textarea id="rulesText" name="rulesText" rows="40" cols="50"><%= rules %></textarea>
+      </div>
+
+    </div>
+  </main>
+</body>
+
+</html>
