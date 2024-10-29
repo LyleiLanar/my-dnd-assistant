@@ -1,0 +1,39 @@
+{
+  "colors": {
+    "zykiss": "9933ff",
+    "oumu": "0066ff",
+    "wynne": "669900",
+    "nordakus": "fc6400",
+    "bane": "9494b8",
+    "ceiryn": "ff66ff",
+    "important": "d4af37",
+    "enemy": "c22b29",
+    "ally": "57bbdb"
+  },
+  "coloringRules": [
+    { "words": ["Zykiss"], "color": "zykiss" },
+    { "words": ["Oumu", "Oumuamua", "Oumuamuá"], "color": "oumu" },
+    { "words": ["Wynne"], "color": "wynne" },
+    { "words": ["Nordakus", "Nordi"], "color": "nordakus" },
+    { "words": ["Bane", "Bané"], "color": "bane" },
+    { "words": ["Ceiryn"], "color": "ceiryn" },
+    {
+      "color": "important",
+      "words": [
+        "Lángoló Stampó",
+        "Nim",
+        "Itran",
+        "Bolbec",
+        "Hatkút",
+        "Calcryx "
+      ]
+    },
+    { "words": ["Fekete Nyulak", "Talazar"], "color": "enemy" },
+    { "words": ["Arlon", "Lankri"], "color": "ally" }
+  ],
+  "baseRules": [
+    ["Zykis", "Zykiss"],
+    ["Zykisss", "Zykiss"],
+    ["Omu", "Oumu"]
+  ]
+}

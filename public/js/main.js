@@ -12,8 +12,22 @@ function convert() {
   let parsed = 'Error!';
 
   parsed = original.toLocaleString();
-  JSON.parse(config).rules.map((current) => {
+
+  const convertingRules = JSON.parse(config);
+  const colors = convertingRules.colors;
+  const baseRules = convertingRules.baseRules;
+  const coloringRules = convertingRules.coloringRules;
+
+  baseRules.map((current) => {
     parsed = parsed.replaceAll(current[0], current[1]);
+  });
+
+  coloringRules.map((rule) => {
+    rule.words.map((wordToColor) => {
+      const newWord = `[color:#${colors[rule.color]}]${wordToColor}[/color]`;
+      console.log(newWord);
+      parsed = parsed.replaceAll(wordToColor, newWord);
+    });
   });
 
   parsedTextarea.value = parsed;

@@ -1,7 +1,9 @@
-const express = require('express');
-const routes = express.Router();
-const commonController = require('../controllers/commons');
+import { Router } from 'express';
+import { getConvert, getHealth } from '../controllers/commons.js';
 
-routes.get('/convert', commonController.getConvert);
+const routes = Router();
 
-module.exports = routes;
+routes.get('/convert', getConvert);
+routes.get('/health', getHealth);
+
+export default routes;
