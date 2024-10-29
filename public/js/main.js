@@ -25,7 +25,6 @@ function convert() {
   coloringRules.map((rule) => {
     rule.words.map((wordToColor) => {
       const newWord = `[color:#${colors[rule.color]}]${wordToColor}[/color]`;
-      console.log(newWord);
       parsed = parsed.replaceAll(wordToColor, newWord);
     });
   });

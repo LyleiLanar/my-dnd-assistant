@@ -39,7 +39,6 @@ app.get('/auth/login', (req, res) => {
 // Hitelesítési callback
 app.get('/auth/callback', async (req, res) => {
   const code = req.query.code;
-  console.log('Code:', code);
   try {
     const response = await axios.post(
       `${authBaseUrl}/token`,
@@ -58,7 +57,6 @@ app.get('/auth/callback', async (req, res) => {
       }
     );
     req.session.accessToken = response.data.access_token;
-    console.log('Access token:', req.session.accessToken);
     res.redirect('/onenote/notes');
   } catch (error) {
     console.error('Auth Error:', error);
