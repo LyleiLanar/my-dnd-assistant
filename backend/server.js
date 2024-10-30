@@ -6,6 +6,7 @@ import commonRoutes from './routes/common.js';
 import authRoutes from './routes/auth.js';
 import oneNoteRoutes from './routes/oneNote.js';
 import session from 'express-session';
+import cors from 'cors';
 
 const PORT = 666;
 const app = express();
@@ -20,6 +21,13 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+  })
+);
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
   })
 );
 

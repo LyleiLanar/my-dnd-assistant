@@ -41,10 +41,18 @@ routes.get('/callback', async (req, res) => {
     );
     req.session.accessToken = response.data.access_token;
     console.log('Access token:', req.session.accessToken);
-    res.redirect('/onenote/notes');
+    res.redirect(process.env.FRONTEND_URL);
   } catch (error) {
     console.error('Auth Error:', error);
     res.status(500).send('Authentication failed');
+  }
+});
+
+routes.get('/status', (req, res) => {
+  if (req.session.accessToken) {
+    res.json({ isAuthenticated: true });
+  } else {
+    res.json({ isAuthenticated: false });
   }
 });
 

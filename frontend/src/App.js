@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './pages/login.jsx';
+import NotFound from './pages/notFound.jsx';
+import Home from './pages/home.jsx';
+import { useEffect, useState } from 'react';
+import { checkAuthStatus } from './utils/auth.js';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    async function fetchAuthStatus() {
+      const status = await checkAuthStatus();
+
+      setIsAuthenticated(status);
+    }
+    fetchAuthStatus();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
+        <Route path="/login" element={isAuthenticated ? <Home /> : <Login />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
