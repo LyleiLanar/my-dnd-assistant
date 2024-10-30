@@ -15,8 +15,19 @@ routes.get('/login', (_req, res) => {
   }/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scopes.join(
     ' '
   )}`;
-  console.log('Redirecting to:', authUrl);
   res.redirect(authUrl);
+});
+
+routes.post('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error destroying session:', err);
+      res.status(500).send('Error logging out');
+    } else {
+      res.clearCookie('connect.sid');
+      res.status(200).send({ message: 'Logged out successfully' });
+    }
+  });
 });
 
 // Hitelesítési callback
@@ -40,7 +51,7 @@ routes.get('/callback', async (req, res) => {
       }
     );
     req.session.accessToken = response.data.access_token;
-    console.log('Access token:', req.session.accessToken);
+    // console.log('Access token:', req.session.accessToken);
     res.redirect(process.env.FRONTEND_URL);
   } catch (error) {
     console.error('Auth Error:', error);

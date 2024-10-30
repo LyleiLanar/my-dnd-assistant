@@ -1,7 +1,9 @@
-export default function NotFound() {
+import BasePage from './basePage';
+
+export default function NotFound(props) {
   return (
-    <div>
+    <BasePage {...props}>
       <h1>Nof Found</h1>
-    </div>
+    </BasePage>
   );
 }

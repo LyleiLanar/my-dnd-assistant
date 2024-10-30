@@ -1,46 +1,38 @@
-export default function BasePage({ children }) {
-  const styles = {
-    basePage: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100vh',
-    },
-    header: {
-      backgroundColor: '#4CAF50',
-      color: 'white',
-      padding: '1rem',
-      textAlign: 'center',
-    },
-    mainContent: {
-      display: 'flex',
-      flex: 1,
-    },
-    sidebar: {
-      backgroundColor: '#f4f4f4',
-      padding: '1rem',
-      width: '200px',
-    },
-    content: {
-      flex: 1,
-      padding: '1rem',
-      backgroundColor: '#fff',
-    },
-  };
+import { logout } from '../utils/auth.js';
+import './basePage.css';
+import { useNavigate } from 'react-router-dom';
+
+export default function BasePage({
+  setIsAuthenticated,
+  isAuthenticated,
+  children,
+}) {
+  const navigate = useNavigate();
+
+  async function handleLogout() {
+    await logout(setIsAuthenticated);
+    navigate('/login');
+  }
 
   return (
-    <div style={styles.basePage}>
-      <header style={styles.header}>
-        <h1>My D&D Assitant</h1>
+    <div className="base-page">
+      <header className="header">
+        <h1>My D&D Assistant</h1>
       </header>
-      <div style={styles.mainContent}>
-        <aside style={styles.sidebar}>
+      <div className="main-content">
+        <aside className="sidebar">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a href="/">➤ Home</a>
             </li>
           </ul>
+          {isAuthenticated && (
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
         </aside>
-        <div style={styles.content}>{children}</div>
+        <div className="content">{children}</div>
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ const style = {
 
 export default function LoginButton() {
   const handleLogin = () => {
-    console.log('Login button clicked');
     window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/login`;
   };
 
