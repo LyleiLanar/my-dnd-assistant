@@ -1,10 +1,4 @@
-const style = {
-  backgroundColor: 'blue',
-  color: 'white',
-  padding: '10px',
-  border: 'none',
-  borderRadius: '5px',
-};
+import './loginButton.css';
 
 export default function LoginButton() {
   const handleLogin = () => {
@@ -12,8 +6,17 @@ export default function LoginButton() {
   };
 
   return (
-    <button onClick={handleLogin} style={style}>
-      Sign in with Microsoft
-    </button>
+    <div className="loginButton">
+      <button onClick={handleLogin}>
+        <div className="buttonText">
+          <p>Sign in with Microsoft</p>
+          <img
+            src="microsoft_logo.png"
+            alt="login_width_microsoft"
+            width={50}
+          />
+        </div>
+      </button>
+    </div>
   );
 }

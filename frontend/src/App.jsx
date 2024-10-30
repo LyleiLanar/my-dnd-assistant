@@ -38,15 +38,6 @@ function App() {
           }
         />
         <Route
-          path="/login"
-          element={
-            <Login
-              setIsAuthenticated={setIsAuthenticated}
-              isAuthenticated={isAuthenticated}
-            />
-          }
-        />
-        <Route
           path="*"
           element={
             <NotFound

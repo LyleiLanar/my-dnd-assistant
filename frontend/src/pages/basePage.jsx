@@ -1,18 +1,23 @@
+import SideElement from '../components/aside/sideElement.jsx';
 import { logout } from '../utils/auth.js';
 import './basePage.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function BasePage({
   setIsAuthenticated,
   isAuthenticated,
   children,
+  ...props
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   async function handleLogout() {
     await logout(setIsAuthenticated);
-    navigate('/login');
+    navigate('/');
   }
+
+  console.log(location.pathname);
 
   return (
     <div className="base-page">
@@ -22,9 +27,16 @@ export default function BasePage({
       <div className="main-content">
         <aside className="sidebar">
           <ul>
-            <li>
-              <a href="/">➤ Home</a>
-            </li>
+            <SideElement
+              path="/"
+              text="Home"
+              isActive={location.pathname === '/'}
+            />
+            <SideElement
+              path="*"
+              text="Not Found"
+              isActive={location.pathname === '/*'}
+            />
           </ul>
           {isAuthenticated && (
             <button className="logout-button" onClick={handleLogout}>
@@ -32,7 +44,10 @@ export default function BasePage({
             </button>
           )}
         </aside>
-        <div className="content">{children}</div>
+        <div className="content">
+          <h1 className="pageTitle">{props.title}</h1>
+          {children}
+        </div>
       </div>
     </div>
   );
