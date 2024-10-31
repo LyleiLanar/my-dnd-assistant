@@ -17,7 +17,7 @@ export default function BasePage({
     navigate('/');
   }
 
-  console.log(location.pathname);
+  console.log('asdfs', location.pathname);
 
   return (
     <div className="base-page">
@@ -36,6 +36,11 @@ export default function BasePage({
               path="*"
               text="Not Found"
               isActive={location.pathname === '/*'}
+            />
+            <SideElement
+              path="/notebooks"
+              text="Notebooks"
+              isActive={location.pathname === '/notebooks'}
             />
           </ul>
           {isAuthenticated && (

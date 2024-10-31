@@ -4,7 +4,7 @@ import axios from 'axios';
 const routes = Router();
 
 // Jegyzetek lekérdezése a OneNote API segítségével
-routes.get('/notes', async (req, res) => {
+routes.get('/notebooks', async (req, res) => {
   try {
     const response = await axios.get(
       'https://graph.microsoft.com/v1.0/me/onenote/notebooks',
